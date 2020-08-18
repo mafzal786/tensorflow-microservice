@@ -47,7 +47,7 @@ model = tf.keras.Sequential([
 ])
 
 
-epoch=1
+epoch=10
 batchsize=32
 
 loss_fn = tf.keras.losses.CategoricalCrossentropy(from_logits=True)
