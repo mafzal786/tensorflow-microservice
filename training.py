@@ -2,7 +2,7 @@ import tensorflow as tf
 print('Tensorflow version:' + tf.__version__)
 
 import numpy as np
-from keras.datasets import mnist
+from tensorflow.keras.datasets import mnist
 
 (X_train, y_train), (X_test, y_test) = mnist.load_data()
 input_shape = [28, 28, 1]
@@ -18,7 +18,6 @@ X_test /= 255
 
 import matplotlib.pyplot as plt
 def display(img):
-    
     plt.imshow(img,cmap=plt.cm.binary)
     
 image_index = 35
