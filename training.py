@@ -16,14 +16,7 @@ X_test = tf.cast(X_test, dtype=tf.float32)
 X_train /= 255
 X_test /= 255
 
-import matplotlib.pyplot as plt
-def display(img):
-    plt.imshow(img,cmap=plt.cm.binary)
-    
-image_index = 35
-print(y_train[image_index])
-display(X_train[image_index])
-plt.show()
+
 
 print(X_train.shape)
 print(X_test.shape)
