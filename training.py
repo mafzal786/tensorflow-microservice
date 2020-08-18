@@ -16,8 +16,6 @@ X_test = tf.cast(X_test, dtype=tf.float32)
 X_train /= 255
 X_test /= 255
 
-
-
 print(X_train.shape)
 print(X_test.shape)
 
@@ -62,4 +60,5 @@ score = model.evaluate(X_test, y_test, verbose=0)
 print('Test loss:', score[0])
 print('Test accuracy:', score[1])
 
+# save your model
 model.save('model.h5')
