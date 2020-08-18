@@ -16,7 +16,7 @@ def index():
 
 @app.route("/predict")
 def predict():
-    pixelarray = int(request.args.get('pixelarray'))
+    pixelarray = request.args.get('pixelarray')
     
     arr_digit=pixelarray.split(',')
     arr32_digit = np.array(arr_digit,dtype='float32')
@@ -28,7 +28,7 @@ def predict():
 
     prediction = model.predict(predict_img)
     
-    response = "You digit is: {}".format(prediction.argmax())
+    response = "Your handwritten digit is: {}".format(prediction.argmax())
 
     return response
 
