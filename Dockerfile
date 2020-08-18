@@ -17,6 +17,7 @@ COPY ./requirements.txt app/requirements.txt
 
 
 WORKDIR /app
+# install flask, tensorflow, scikit-learn, pyspark
 RUN pip3 install -r requirements.txt
 
 
