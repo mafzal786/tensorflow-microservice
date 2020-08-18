@@ -16,7 +16,6 @@ RUN apt-get update -y && apt-get install -y gnupg2 wget openjdk-8-jre python3-pi
 
 
 COPY ./requirements.txt $APP_DIR/requirements.txt
-RUN pip3 install -r requirements.txt
 
 
 
@@ -30,7 +29,10 @@ COPY ./app.py $APP_DIR/app.py
 
 ENV HOME /home/$NB_USER
 USER $NB_UID
+
 WORKDIR /app
+RUN pip3 install -r requirements.txt
+
 
 
 EXPOSE 8080
