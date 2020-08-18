@@ -12,6 +12,7 @@ RUN apt-get update -y && apt-get install -y gnupg2 wget openjdk-8-jre python3-pi
 && pip3 install --upgrade pip setuptools
 
 COPY ./requirements.txt /app/requirements.txt
+COPY ./training.py /app/training.py
 
 WORKDIR /app
 RUN pip install -r requirements.txt
@@ -20,7 +21,6 @@ RUN pip install -r requirements.txt
 EXPOSE 8080
 
 
-# WORKDIR $SPARK_HOME
 
 COPY . /app
 
