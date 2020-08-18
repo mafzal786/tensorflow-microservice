@@ -1,46 +1,30 @@
 # ARG ubuntu_version=16.04
 #FROM ubuntu:${ubuntu_version}
-#Use ubuntu 18:04 as your base image
+#Use ubuntu 16:04 as your base image
 FROM ubuntu:16.04
 #Any label to recognise this image.
-#LABEL image=Spark-base-image
-ENV SPARK_VERSION 2.4.5
-ENV HADOOP_VERSION 2.7
-ENV NB_USER=nbuser
-ENV NB_UID=1011
 
-#Run the following commands on my Linux machine
+
 #install the below packages on the ubuntu image
-RUN apt-get update -y && apt-get install -y gnupg2 wget openjdk-8-jre scala python-pip
-
-#Download the Spark binaries from the repo
-RUN wget --no-verbose http://apache.mirrors.tds.net/spark/spark-2.4.5/spark-2.4.5-bin-hadoop2.7.tgz
-
-# Untar the downloaded binaries , move them the folder name spark and add the spark bin on my class path
-RUN tar -xzf spark-2.4.5-bin-hadoop2.7.tgz 
-
-RUN mv spark-2.4.5-bin-hadoop2.7 /opt/spark
-ENV SPARK_HOME /opt/spark
-ENV PATH $PATH:${SPARK_HOME}/bin
+RUN apt-get update -y && apt-get install -y gnupg2 wget openjdk-8-jre python3-pip python3-dev \
+&& cd /usr/local/bin \
+&& ln -s /usr/bin/python3 python \
+&& pip3 install --upgrade pip
 
 COPY ./requirements.txt /app/requirements.txt
 
-#Expose the UI Port 4040
 WORKDIR /app
 RUN pip install -r requirements.txt
 
 
 EXPOSE 8080
 
-ENV HOME /home/$NB_USER
-USER $NB_UID
-
 
 # WORKDIR $SPARK_HOME
 
 COPY . /app
 
-ENTRYPOINT [ "python" ]
+ENTRYPOINT [ "python3" ]
 
 CMD [ "app.py" ]
 #ENTRYPOINT ["tail", "-f", "/dev/null"]
