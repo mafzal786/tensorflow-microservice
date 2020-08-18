@@ -14,6 +14,9 @@ RUN apt-get update -y && apt-get install -y gnupg2 wget openjdk-8-jre python3-pi
 COPY ./requirements.txt /app/requirements.txt
 COPY ./training.py /app/training.py
 
+RUN useradd -ms /bin/bash appuser
+
+
 WORKDIR /app
 RUN pip install -r requirements.txt
 
@@ -23,6 +26,10 @@ EXPOSE 8080
 
 
 COPY . /app
+
+RUN chown -R appuser:appuser /app
+RUN chmod 755 /app
+USER appuser
 
 ENTRYPOINT [ "python3" ]
 
