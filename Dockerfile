@@ -3,7 +3,7 @@
 #Use ubuntu 16:04 as your base image
 FROM ubuntu:16.04
 #Any label to recognise this image.
-ENV APP_DIR=/app
+ENV APP_DIR /app
 ENV NB_USER=nbuser
 ENV NB_UID=1011
 
