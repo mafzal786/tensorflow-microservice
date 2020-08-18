@@ -13,6 +13,8 @@ RUN apt-get update -y && apt-get install -y gnupg2 wget openjdk-8-jre python3-pi
 && ln -s /usr/bin/python3 python \
 && pip3 install --upgrade pip setuptools
 
+RUN pip3 install -r requirements.txt
+
 
 COPY ./requirements.txt $APP_DIR/requirements.txt
 COPY ./training.py $APP_DIR/training.py
@@ -23,9 +25,9 @@ RUN useradd -m -s /bin/bash -N -u $NB_UID $NB_USER \
     && chown -R $NB_USER $APP_DIR 
 
 
+ENV HOME /home/$NB_USER
 USER $NB_UID
 WORKDIR /app
-RUN pip install -r requirements.txt
 
 
 EXPOSE 8080
