@@ -27,7 +27,7 @@ EXPOSE 8080
 
 COPY . /app
 
-
+RUN python training.py
 
 ENTRYPOINT [ "python3" ]
 
