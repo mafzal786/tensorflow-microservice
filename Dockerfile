@@ -27,9 +27,6 @@ EXPOSE 8080
 
 COPY . /app
 
-RUN chown -R appuser:appuser /app
-RUN chmod 755 /app
-USER appuser
 
 ENTRYPOINT [ "python3" ]
 
