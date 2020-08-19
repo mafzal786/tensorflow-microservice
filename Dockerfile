@@ -27,7 +27,7 @@ EXPOSE 8080
 
 COPY . /app
 # download model
-https://github.com/mafzal786/tensorflow-microservice/blob/master/model.h5
+RUN wget https://github.com/mafzal786/tensorflow-microservice/blob/master/model.h5
 
 # if execute the trianing inside this same container 
 # RUN python training.py
