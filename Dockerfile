@@ -24,10 +24,8 @@ RUN pip3 install -r requirements.txt
 
 EXPOSE 8080
 
-
+# model will be copied
 COPY . /app
-# download model
-RUN wget https://github.com/mafzal786/tensorflow-microservice/blob/master/model.h5
 
 # if execute the trianing inside this same container 
 # RUN python training.py
