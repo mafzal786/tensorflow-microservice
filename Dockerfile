@@ -26,8 +26,11 @@ EXPOSE 8080
 
 
 COPY . /app
+# download model
+https://github.com/mafzal786/tensorflow-microservice/blob/master/model.h5
 
-RUN python training.py
+# if execute the trianing inside this same container 
+# RUN python training.py
 
 ENTRYPOINT [ "python3" ]
 
