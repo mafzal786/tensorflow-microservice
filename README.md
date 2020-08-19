@@ -1,6 +1,6 @@
 # tensorflow-microservice
 
-1. Launch container using the Dockerfile
+1. Launch the pod using the Dockerfile
 2. Service route will be created in k8
 3. Generate pixel array using draw_digit.html
 4. Launch the service as follows for example:
